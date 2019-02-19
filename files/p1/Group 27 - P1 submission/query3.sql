@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM ( SELECT * FROM categories GROUP BY itemID HAVING COUNT(categories) = 4);

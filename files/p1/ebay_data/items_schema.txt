@@ -1,0 +1,140 @@
+{
+	"$schema": "schema for Auction database", 
+	"title": "Items",
+	"description": "set of items up for auction",
+	"type": "array",
+	"items": {
+		"title": "Item",
+		"type": "object",
+		"properties": {
+			"ItemID": {
+				"description": "an identifier unique across all items", 
+				"type": "number"
+			},
+			"Name": {
+				"description": "A short item description used as the auction's title.", 
+				"type": "string"
+			},
+			"Category": {
+				"description":  "A category to which the item belongs. An item may belong to
+								multiple categories",
+				"type": "array",
+				"minimum": 1
+			},
+			"Currently": {
+				"description": "The current highest bid. This amount is always equal to the
+								amount of the highest bid, or First_Bid if there are no bids.",
+				"type": "string"
+			},
+			"Buy_Price": {
+				"description": "The price, chosen by the seller before the auction starts, at
+                                                                 which a bidder can win the auction immediately.
+                                                                 The seller may choose not to set such a price, in 
+                                                                 which case the element would be missing.", 
+				"type": "string", 
+				"minimum": 0
+			},
+			"First_Bid": {
+				"description": "The minimum qualifying first-bid amount, as determined by the
+								seller before the auction starts. It does not mean there is a bid
+								at all.", 
+				"type": "string"
+			},
+			"Number_of_Bids": {
+				"description": "Number of Bids/Bid elements, each corresponding to a bid for a particular item.", 
+				"type": "number"
+			},
+			"Bids": {
+				"description": "Bids placed on the item", 
+				"type": "array", 
+				"items": {
+					"title": "Bid",
+					"type": "object",
+					"properties": {
+						"Bidder": {
+							"description": "Attribute UserID uniquely identifies a user. Attribute
+											Rating is the user's rating. Note that a user may be a
+											bidder in one auction and a seller in another. However, his
+											Rating, Location, and Country information are the same
+											wherever he appears in our data (which reflects a snapshot
+											in time). Note this implies that UserIDs with missing
+											location or country information cannot be sellers in
+											another auction.",
+							"type": "object",
+							"properties": {
+								"Location": {
+									"description": "Location of bidder",
+									"type": "string",
+									"minimum": 0
+								},
+								"Country": {
+									"description": "Country of bidder",
+									"type": "string",
+									"minimum": 0
+								},
+								"UserID": {
+									"description": "unique id for a user across all users",
+									"type": "string"
+								},
+								"Rating": {
+									"description": "User's rating",
+									"type": "number"
+								}
+							},
+							"required": ["UserID", "Rating"]
+						},
+						"Time": {
+							"description": "Time of bid",
+							"type": "string"
+						},
+						"Amount": {
+							"description": "Amount of bid",
+							"type": "string"
+						},
+                        "required": ["Bidder", "Time", "Amount"]
+					}
+				}
+			}, 
+			"Location": {
+				"description": "The seller's location information (e.g., city, state). See description
+								under Bidder", 
+				"type": "string"
+			}, 
+			"Country": {
+				"description": "The seller's country. See description
+								under Bidder", 
+				"type": "string"
+			},
+			"Started": {
+				"description": "Auction start time", 
+				"type": "string"
+			},
+			"Ends": {
+				"description": "Auction end time. If this is in the past with respect to the current
+								system time, the auction is closed. If in the future, the auction is
+								still open.", 
+				"type": "string"
+			},
+			"Seller": {
+				"description": "Attributes give the seller's UserID and rating.", 
+				"type": "object",
+				"properties": {
+					"UserID": {
+						"description": "unique id for a user across all users",
+						"type": "string"
+					},
+					"Rating": {
+						"description": "Users's rating",
+						"type": "number"
+					}
+				},
+				"required": ["UserID", "Rating"]
+			},
+			"Description": {
+				"description": "the item's full description",
+				"type": "string"
+			}
+		},
+		"required": ["ItemID", "Name", "Category", "Currently", "First_Bid", "Number_of_Bids", "Bids", "Location", "Country", "Started", "Ends", "Seller", "Description"]
+	}
+}
