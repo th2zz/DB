@@ -1,0 +1,53 @@
+{% extends "app_base.html" %}
+{% block content %}
+<h3> Search </h3> 
+
+<form method="POST" action="search" role="form" style="max-width:400px; width:100%">
+	{% if message is defined %}
+	<div class="alert alert-warning" role="alert">{{ message }}</div>
+	{% endif %}
+	<div class="alert alert-info">Anything not input will not be taken into account</div>
+	<div class="form-group">
+	  <label for="itemID">Item ID</label>
+	  <input type="text" class="form-control" id="itemID" name="itemID" />
+	</div>
+	<div class="form-group">
+	  <label for="userID">User ID</label>
+	  <input type="text" name="userID" class="form-control" id="userID" />
+	</div>
+	<div class="form-group">
+	  <label for="minPrice">Min Price</label>
+	  <input type="text" name="minPrice" class="form-control" id="minPrice" />
+	</div>
+	<div class="form-group">
+	  <label for="maxPrice">Max Price</label>
+	  <input type="text" name="maxPrice" class="form-control" id="maxPrice" />
+	</div>
+	<div class="form-group">
+		<label for="status">Status &nbsp;&nbsp;</label>
+		<div class="radio-inline"><label><input type="radio" name="status" value="open">Open</label></div>
+		<div class="radio-inline"><label><input type="radio" name="status" value="close">Close</label></div>
+		<div class="radio-inline"><label><input type="radio" name="status" value="notStarted">Not Started</label></div>
+		<div class="radio-inline"><label><input type="radio" name="status" value="all" checked>All</label></div>
+	</div>
+	<div><input type="submit" value="Start Searching!" class="btn btn-primary" /></div>
+</form>
+<h3>Result</h3>
+<ul>
+{% if search_result %}
+{% for result in search_result %}
+	{% for key in result %}
+		<div>
+			<span>{{ key|e }}</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>{{ result[key]|e }}</span>
+		</div>
+  	{% endfor %}
+  	<div>--------</div>
+{% endfor %}
+{% else %}
+<div>No results</div>
+{% endif %}
+</ul>
+
+{% endblock %}

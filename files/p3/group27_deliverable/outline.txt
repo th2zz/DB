@@ -1,0 +1,2 @@
+Test is written inside main.cpp, no extra files!
+Design report is named as report.pdf and is located at current directory(zipped folder).

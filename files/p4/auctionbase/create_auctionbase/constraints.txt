@@ -1,0 +1,31 @@
+1) Used primary key for User_ID in Users table (File: create.sql)
+
+2) Used foreign key in Bids and Items tables to refer to User_ID in Users table (File: create.sql)
+
+3) Used primary key for Item_ID in Items table (File: create.sql)
+
+4) Used foreign key in Bids to refer to Item_ID in Items table (File: create.sql)
+
+5) Used foreign key in Categories to refer to Item_ID in Items table (File: create.sql)
+
+6) Used primary key for Item_ID and Category in Categories table (File: create.sql)
+
+7) Implemented using check constraint in Items table (File: create.sql)
+
+8) Implmented using trigger8 (Files: trigger8_add.sql and trigger8_drop.sql)
+
+9) Implemented using trigger7 (Files: trigger7_add.sql and trigger7_drop.sql)
+
+10) Used unique for Item_ID and Time in Bids table (File: create.sql)
+
+11) Implemented using trigger5 {before start time} and trigger6 {after end time} (Files: trigger5_add.sql, trigger5_drop.sql, trigger6_add.sql and trigger6_drop.sql)
+
+12) Used primary key for Item_ID, User_ID and Amount in Bids table (File: create.sql)
+
+13) Implemented using trigger4 (Files: trigger4_add.sql and trigger4_drop.sql)
+
+14) Implemented using trigger3 (Files: trigger3_add.sql and trigger3_drop.sql)
+
+15) Implemented using trigger2 (Files: trigger2_add.sql and trigger2_drop.sql)
+
+16) Implemented using trigger1 (Files: trigger1_add.sql and trigger1_drop.sql)
