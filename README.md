@@ -1,1 +1,2 @@
-Collection of files and projects for CS564 database design and management in UW madison
+Collection of files, projects,  and other study resources for "CS564 database management system" Spring 2019 in UW madison.
+
